@@ -1,0 +1,46 @@
+RST 竞赛训练营 · 入营筛选作品提交说明
+==================================================
+
+作者：陈博皓
+学校：杭州师范大学 · 汉语国际教育（师范）· 2026 级本科
+联系方式：17205775225 ｜ 微信 byemelodyrose89757 ｜ suge002008@outlook.com
+
+一、线上访问地址（已部署至 GitHub Pages，可直接访问）
+--------------------------------------------------
+必做题 · 个人在线简历：
+  https://89757-creater.github.io/rst-camp-2026/
+
+附加题 · 坦克大战（独立版）：
+  https://89757-creater.github.io/rst-camp-2026/tank/
+
+附加题 · 坦克大战（简历内嵌版，简历页脚有入口）：
+  https://89757-creater.github.io/rst-camp-2026/tank.html
+
+源码仓库（GitHub 开源）：
+  https://github.com/89757-creater/rst-camp-2026
+
+二、压缩包内容
+--------------------------------------------------
+resume-site/    必做题：响应式个人简历（React 19 + TypeScript + Vite + Tailwind CSS）
+tank-battle/    附加题：坦克大战小游戏（原生 Canvas 2D + TypeScript）
+.github/        GitHub Actions 自动构建部署配置
+README.md       项目总说明
+各子目录 README.md 内含设计说明与运行方法
+
+三、本地运行方法
+--------------------------------------------------
+cd resume-site && npm install && npm run dev    （简历，/tank.html 为内嵌游戏）
+cd tank-battle && npm install && npm run dev    （坦克大战独立版）
+
+四、加分点自查
+--------------------------------------------------
+[必做题]
+1. 已部署上线（GitHub Pages），网址见上文；
+2. 页面设计：森林墨绿单色系编辑排版，明暗双主题切换（记忆用户选择）；
+3. 交互：滚动错落淡入、高考数据滚动计数、导航毛玻璃、技能/项目行悬停微交互；
+4. 响应式：移动端自动单栏布局。
+[附加题]
+1. 身份标识：地图中央砖墙为本人姓名拼音首字母「CBH」
+   （见 tank-battle/src/main.ts 中 LETTERS 点阵表与 buildMap 函数）；
+2. 底图素材：使用「浪尖儿大学生社区」（浪尖箐英）场景截图；
+3. 可玩性：移动/开火/敌方 AI/砖墙破坏/生命与胜负判定/结算重开。
