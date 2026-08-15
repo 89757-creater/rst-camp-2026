@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * 全站配色：森林墨绿单色体系
+ * 浅色模式 = 米色纸面 + 深林绿墨色；深色模式 = 暗夜松林
+ * 仅在此文件调整 CSS 变量即可更换全站主题色
+ */
+@layer base {
+  :root {
+    --background: 60 9% 96%;        /* 米色纸面 #f6f6f4 */
+    --foreground: 108 52% 15%;      /* 深林绿 #1c3a13 */
+    --card: 0 0% 100%;
+    --card-foreground: 108 52% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 108 52% 15%;
+    --primary: 108 52% 15%;
+    --primary-foreground: 60 9% 96%;
+    --secondary: 90 12% 92%;
+    --secondary-foreground: 108 52% 15%;
+    --muted: 90 12% 92%;
+    --muted-foreground: 100 8% 42%;
+    --accent: 90 12% 92%;
+    --accent-foreground: 108 52% 15%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 100 10% 84%;          /* 灰绿描边 #d2d8d0 */
+    --input: 100 10% 84%;
+    --ring: 108 52% 15%;
+    --action: 133 100% 25%;         /* 行动绿 #007f24，用于链接与强调 */
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 110 30% 7%;       /* 暗夜松林 */
+    --foreground: 80 14% 93%;
+    --card: 110 24% 10%;
+    --card-foreground: 80 14% 93%;
+    --popover: 110 24% 10%;
+    --popover-foreground: 80 14% 93%;
+    --primary: 80 14% 93%;
+    --primary-foreground: 110 30% 7%;
+    --secondary: 105 18% 15%;
+    --secondary-foreground: 80 14% 93%;
+    --muted: 105 18% 15%;
+    --muted-foreground: 100 8% 62%;
+    --accent: 105 18% 15%;
+    --accent-foreground: 80 14% 93%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 105 18% 19%;
+    --input: 105 18% 19%;
+    --ring: 90 20% 60%;
+    --action: 122 45% 62%;          /* 深色模式下提亮行动绿保证对比度 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth; /* 锚点平滑滚动 */
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer utilities {
+  /* 行动绿（链接 / 强调数字） */
+  .text-action {
+    color: hsl(var(--action));
+  }
+  /* 章节锚点偏移，避免被固定导航遮挡 */
+  .scroll-anchor {
+    scroll-margin-top: 5rem;
+  }
+}

@@ -1,0 +1,60 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # 必做题：个人在线简历（含内嵌版坦克大战 /tank.html）
+      - name: Build resume site
+        run: |
+          cd resume-site
+          npm install --no-audit --no-fund
+          npm run build
+
+      # 附加题：坦克大战独立站点
+      - name: Build tank battle
+        run: |
+          cd tank-battle
+          npm install --no-audit --no-fund
+          npm run build
+
+      # 拼装发布目录：简历在根路径，游戏独立版在 /tank/
+      - name: Assemble site
+        run: |
+          mkdir -p _site/tank
+          cp -r resume-site/dist/* _site/
+          cp -r tank-battle/dist/* _site/tank/
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

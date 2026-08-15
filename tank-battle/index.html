@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="坦克大战小游戏 —— 方向键移动，空格开火，地图砖墙为姓名缩写 CBH" />
+    <title>坦克大战 · CBH</title>
+    <style>
+      /* 校园绿主题：与作者个人简历站点同一套配色 */
+      :root {
+        --bg: #f6f6f4;
+        --ink: #1c3a13;
+        --muted: #6b7a66;
+        --line: #d2d8d0;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #121d0e;
+          --ink: #f0f2ec;
+          --muted: #9aa896;
+          --line: #2a3a26;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 16px 48px;
+      }
+      h1 {
+        font-family: "Noto Serif SC", "Songti SC", SimSun, serif;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+        margin: 8px 0 4px;
+      }
+      .sub { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+      .stage { position: relative; }
+      canvas {
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        max-width: min(92vw, 640px);
+        height: auto;
+        background: #152411;
+      }
+      /* HUD 状态栏 */
+      .hud {
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        margin: 16px 0;
+        font-size: 14px;
+      }
+      .hud b {
+        font-family: "Noto Serif SC", SimSun, serif;
+        font-size: 20px;
+        font-weight: 400;
+      }
+      .help { color: var(--muted); font-size: 13px; line-height: 1.9; text-align: center; }
+      .help kbd {
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-size: 12px;
+      }
+      /* 结束遮罩 */
+      .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        background: rgba(0, 0, 0, 0.55);
+        border-radius: 8px;
+        color: #f6f6f4;
+      }
+      .overlay.hidden { display: none; }
+      .overlay p { font-size: 22px; margin: 0; }
+      button {
+        height: 44px;
+        padding: 0 28px;
+        border-radius: 999px;
+        border: none;
+        background: var(--ink);
+        color: var(--bg);
+        font-size: 14px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      button:hover { transform: scale(1.04); }
+      footer {
+        margin-top: 24px;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>坦克大战</h1>
+    <p class="sub">地图中央砖墙为姓名缩写「CBH」 · 底图：浪尖儿大学生社区（浪尖箐英）场景素材</p>
+
+    <div class="stage">
+      <canvas id="game" width="640" height="640"></canvas>
+      <div id="overlay" class="overlay hidden">
+        <p id="overlay-title"></p>
+        <button id="restart">再来一局</button>
+      </div>
+    </div>
+
+    <div class="hud">
+      <span>生命 <b id="hud-lives">3</b></span>
+      <span>击毁 <b id="hud-score">0</b></span>
+      <span>剩余敌人 <b id="hud-left">10</b></span>
+    </div>
+
+    <p class="help">
+      <kbd>↑ ↓ ← →</kbd> 或 <kbd>W A S D</kbd> 移动 · <kbd>空格</kbd> 发射炮弹<br />
+      消灭全部 10 辆敌方坦克即获胜；红砖可被击碎，注意利用「CBH」砖墙作掩体
+    </p>
+
+    <footer>Designed &amp; Built by 陈博皓 · Canvas 2D 原生实现</footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
