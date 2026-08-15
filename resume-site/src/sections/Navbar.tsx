@@ -7,6 +7,7 @@ import { profile } from "@/config"
 const links = [
   { href: "#about", label: "关于" },
   { href: "#education", label: "教育" },
+  { href: "#projects", label: "项目" },
   { href: "#experience", label: "经历" },
   { href: "#skills", label: "技能" },
   { href: "#contact", label: "联系" },

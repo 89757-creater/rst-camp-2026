@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/Reveal"
 import { SectionHeading } from "@/components/SectionHeading"
-import { education } from "@/config"
+import { certificates, education } from "@/config"
 
 /** 教育背景：左时间右内容的简洁双栏 */
 export function Education() {
@@ -29,6 +29,27 @@ export function Education() {
             </Reveal>
           ))}
         </div>
+
+        {/* 专业证书 */}
+        <Reveal delay={200}>
+          <div className="mt-16">
+            <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
+              Certificates
+            </p>
+            <ul className="mt-6 space-y-4">
+              {certificates.map((c) => (
+                <li
+                  key={c.name}
+                  className="flex flex-wrap items-baseline gap-x-4 border-b pb-4"
+                >
+                  <span className="font-serif text-lg font-light">{c.name}</span>
+                  <span className="text-sm text-action">{c.issuer}</span>
+                  <span className="text-xs text-muted-foreground">{c.year}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
     </section>
   )
