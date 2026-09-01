@@ -5,8 +5,16 @@ RST 竞赛训练营 · 入营筛选作品提交说明
 学校：杭州师范大学 · 汉语国际教育（师范）· 2026 级本科
 联系方式：17205775225 ｜ 微信 byemelodyrose89757 ｜ suge002008@outlook.com
 
-一、线上访问地址（已部署至 GitHub Pages，可直接访问）
+一、线上访问地址
 --------------------------------------------------
+【推荐 · Netlify 个性域名】
+必做题 · 个人在线简历：
+  https://chenbohao.netlify.app/
+
+附加题 · 坦克大战（简历内嵌版）：
+  https://chenbohao.netlify.app/tank.html
+
+【备用 · GitHub Pages 自动部署】
 必做题 · 个人在线简历：
   https://89757-creater.github.io/rst-camp-2026/
 

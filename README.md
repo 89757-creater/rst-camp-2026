@@ -2,6 +2,11 @@
 
 **作者：陈博皓** ｜ 杭州师范大学 · 汉语国际教育（师范）· 2026 级本科
 
+## 线上地址（Netlify 个性域名，推荐）
+
+- 必做题 · 个人在线简历：<https://chenbohao.netlify.app/>
+- 附加题 · 坦克大战（简历内嵌版）：<https://chenbohao.netlify.app/tank.html>
+
 ## 线上地址（GitHub Pages 自动部署）
 
 - 必做题 · 个人在线简历：<https://89757-creater.github.io/rst-camp-2026/>
