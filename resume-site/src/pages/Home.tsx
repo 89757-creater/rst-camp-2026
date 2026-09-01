@@ -9,6 +9,7 @@ import { Skills } from "@/sections/Skills"
 import { Interests } from "@/sections/Interests"
 import { Contact } from "@/sections/Contact"
 import { Footer } from "@/sections/Footer"
+import { BackToTop } from "@/components/BackToTop"
 
 /**
  * 首页：单页简历
@@ -30,6 +31,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </>
   )
 }

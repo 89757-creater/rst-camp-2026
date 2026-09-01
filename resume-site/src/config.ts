@@ -16,6 +16,8 @@ export const profile = {
   taglineTop: "用框架思维",
   taglineBottom: "点亮每一次学习",
   taglineAccent: "点亮",
+  // 首屏身份关键词：循环打字机依次展示
+  roles: ["耐心引导者", "框架思维教育者", "AI 工具开发者", "文学爱好者"],
   // 个人照片：把照片放进 public/ 目录（如 public/photo.jpg），然后把 null 改为 "photo.jpg"
   photo: null as string | null,
   email: "suge002008@outlook.com",

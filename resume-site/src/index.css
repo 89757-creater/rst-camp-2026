@@ -77,8 +77,38 @@
   .text-action {
     color: hsl(var(--action));
   }
+  /* 行动绿背景（滚动进度条 / 标题下划线 / 打字光标） */
+  .bg-action {
+    background-color: hsl(var(--action));
+  }
   /* 章节锚点偏移，避免被固定导航遮挡 */
   .scroll-anchor {
     scroll-margin-top: 5rem;
+  }
+}
+
+/* ===== 打字机光标（参考站动效） ===== */
+@keyframes caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.type-caret {
+  animation: caret-blink 1s step-end infinite;
+}
+/* 打完字后的呼吸闪烁：更慢更柔 */
+.type-caret-breath {
+  animation: caret-blink 1.6s ease-in-out infinite;
+}
+
+/* 系统开了「减少动态」时，所有光标常亮不闪 */
+@media (prefers-reduced-motion: reduce) {
+  .type-caret,
+  .type-caret-breath {
+    animation: none;
   }
 }

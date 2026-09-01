@@ -20,9 +20,22 @@ const links = [
 export function Navbar() {
   const { dark, toggle } = useTheme()
   const [scrolled, setScrolled] = useState(false)
+  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      // rAF 节流，滚动事件密集时每帧最多更新一次
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 24)
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight
+        setProgress(docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0)
+        ticking = false
+      })
+    }
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
@@ -36,6 +49,12 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
+      {/* 顶部全局滚动进度条（参考站动效，行动绿 2px） */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-0.5 bg-action transition-[width] duration-150 ease-out"
+        style={{ width: `${progress}%` }}
+      />
       <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
         <a
           href="#top"
